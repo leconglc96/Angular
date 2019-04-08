@@ -1,0 +1,82 @@
+<app-child [name]="myName" [age]="Age" (address)="myAddress($event)">
+  Đây là text thêm vào
+</app-child>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <input type="number" name="age" [(ngModel)]="myAge" placeholder="Input your age ...">
+                <button class="btn btn-primary ml-2" (click)="Add()"> Add </button>
+            </div>
+            <h3>This is my address: {{Address}}</h3>
+            <h3>Time:
+                <span *ngIf="min >= 10; else elseBlockMin">
+        {{min}} :
+    </span>
+                <ng-template #elseBlockMin>
+                    0{{min}} :
+                </ng-template>
+
+                <span *ngIf="sec >= 10; else elseBlockSec">
+        {{sec}}
+    </span>
+                <ng-template #elseBlockSec>
+                    0{{sec}}
+                </ng-template>
+            </h3>
+            <hr/>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="toggle" (click)="onChange(true)">
+                    Hợp lệ
+                </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="toggle" (click)="onChange(false)">
+                    Không hợp lệ
+                </label>
+            </div>
+            <h3 *ngIf="onChecked; else elseBlock">Hợp lệ</h3>
+            <ng-template #elseBlock>
+                <h3 *ngIf="onChecked != null; else elseB">Không hợp lệ</h3>
+            </ng-template>
+            <ng-template #elseB>
+            </ng-template>
+
+            <hr>
+            <h5>Total checked: {{actived}}/{{checked}}</h5>
+            <div class="form-check" *ngFor="let test of tests">
+                <input type="checkbox" class="form-check-input" name="{{test.name}}" [(ngModel)]="test.stt"
+                       (change)="handleChecked(test.stt? actived = actived + 1 : actived = actived - 1)">
+                {{test.title}}
+            </div>
+        </div>
+    </div>
+    <hr>
+</div>
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <app-movie-list></app-movie-list>
+        </div>
+        <div class="col-12">
+            <app-movie-add-form></app-movie-add-form>
+        </div>
+    </div>
+</div>
+<hr>
+
+<!-- Router -->
+<app-header></app-header>
+<br>
+<router-outlet></router-outlet>
+<br>
+<div class="ml-5 mb-4 ">
+    <!-- Chuyển trang bằng event binding -->
+    <button class="btn btn-outline-success mr-sm-2" (click)="changePage('home')">Home</button>
+    <button class="btn btn-outline-success mr-sm-2" (click)="changePage('about')">About</button>
+    <button class="btn btn-outline-success mr-sm-2" (click)="changePage('product')">Product</button>
+
+</div>

@@ -1,0 +1,24 @@
+<ng-container *ngIf="products; else noProduct ">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <h2 class="card-header card-primary"> {{products.name}} </h2>
+          <div class="card-block ml-sm-4 mt-2 mb-2">
+            <h5> ID: {{products.id}} </h5>
+            <h5> Name: {{products.name}} </h5>
+            <h5> Price: {{products.price | currency : 'VND' : true}} </h5>
+            <h5> Status: {{products.status ? 'Active' : 'Deactive'}} </h5>
+
+            <button class="btn btn-outline-success" [routerLink] ="['/product']" title="Back to list"> Back </button>
+            <button class="btn btn-outline-success ml-sm-2" [routerLink] ="['/product', products.id + 1]" title="Go to next item"> Next Product </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-template #noProduct>
+  <h1>No Product</h1>
+</ng-template>

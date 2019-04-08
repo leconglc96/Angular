@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <h3 class="card-header card-primary"> Child component </h3>
+        <div class="card-block mr-4 ml-4">
+          <h4>Họ và Tên: {{ name | uppercase }}</h4>
+          <h4>Tuổi: {{ age }}</h4>
+        </div>
+
+        <h5 class="mr-4 ml-4">Address: {{address}}</h5>
+        <input class="mr-4 ml-4" type="text" name="address" placeholder="Input address ..." [(ngModel)]="address">
+        <button type="button" class="btn btn-primary mr-4 ml-4 col-3 mt-2 mb-2" (click)="onClick()">Send</button>
+      </div>
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>
