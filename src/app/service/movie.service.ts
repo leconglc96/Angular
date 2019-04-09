@@ -18,9 +18,11 @@ export class MovieService {
   addMovie(movie: Movie) {
     movie.id = this.getLastId(this.movies);
     this.movies.push(movie);
+    console.log(this.movies);
   }
   getLastId(movies) {
-    this.id = movies.length > 0 ? movies.sort((a, b) => {
+    const cloneMovie = [...movies];
+    this.id = cloneMovie.length > 0 ? cloneMovie.sort((a, b) => {
       if (a.id > b.id) {
         return -1;
       } else if (a.id < b.id) {

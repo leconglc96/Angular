@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
     {
       title: 'This is checkbox 05', name: 'check05', stt: false
     }
-  ]
+  ];
   Add() {
     this.Age = this.myAge;
   }
@@ -54,7 +54,9 @@ export class AppComponent implements OnInit {
   handleChecked(value) {
     console.log(value);
   }
-  constructor(public routerService: Router) {}
+  constructor(
+      public routerService: Router,
+  ) {}
   changePage(url) {
     // this.routerService.navigate([url]);
     // or
